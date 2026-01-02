@@ -1,0 +1,315 @@
+[
+  {
+    "name": "Aloe Vera",
+    "scientific_name": "Aloe barbadensis miller",
+    "uses": [
+      "Heals burns and skin injuries (antimicrobial, regenerative)",
+      "Soothes digestive upset and constipation (laxative)",
+      "Reduces inflammation (cooling anti-inflammatory)"
+    ],
+    "region": "South India (Kerala, Karnataka, Tamil Nadu)",
+    "description": "Ancient succulent used topically and internally for skin, gut and anti‑inflammatory relief.",
+    "image": "static/images/plants/1.jpg"
+  },
+  {
+    "name": "Amla",
+    "scientific_name": "Phyllanthus emblica",
+    "uses": [
+      "Boosts immunity and fights infections (vitamin C, antioxidant)",
+      "Aids digestion and detox (digestive tonic)",
+      "Promotes hair and skin health (rejuvenating, anti-aging)"
+    ],
+    "region": "South India (Kerala, Tamil Nadu, Karnataka)",
+    "description": "Revered Rasayana (rejuvenator) in Ayurveda for immunity, digestion and anti-aging.",
+    "image": "static/images/plants/2.jpeg"
+  },
+  {
+    "name": "Amruthaballi (Giloy)",
+    "scientific_name": "Tinospora cordifolia",
+    "uses": [
+      "Reduces fever and infections (immune-modulating, antipyretic)",
+      "Improves digestive and liver function (detox tonic)",
+      "Soothes rheumatoid and chronic pain"
+    ],
+    "region": "South India (Kerala, Karnataka, Tamil Nadu)",
+    "description": "Climbing vine used as a general tonic and antipyretic in Siddha/Ayurveda.",
+    "image": "static/images/plants/3.jpg"
+  },
+  {
+    "name": "Ashoka",
+    "scientific_name": "Saraca indica",
+    "uses": [
+      "Relieves menstrual disorders and uterine cramps (uterine tonic)",
+      "Eases dysentery and abdominal pain (anti-inflammatory, mild astringent)",
+      "Brightens complexion (skin tonic)"
+    ],
+    "region": "South India (Tamil Nadu, Kerala groves)",
+    "description": "Bark and flowers used in female reproductive and digestive traditional remedies.",
+    "image": "static/images/plants/4.webp"
+  },
+  {
+    "name": "Bamboo",
+    "scientific_name": "Bambusa spp.",
+    "uses": [
+      "Treats fever, cough and respiratory discomfort (antipyretic, antimicrobial)",
+      "Eases joint pain (anti-inflammatory)",
+      "Supports skin and digestion"
+    ],
+    "region": "South India (Western Ghats – Kerala, Karnataka, Tamil Nadu)",
+    "description": "Wild bamboo used traditionally for fever, cough and arthritis.",
+    "image": "static/images/plants/5.jpeg"
+  },
+  {
+    "name": "Basale (Malabar spinach)",
+    "scientific_name": "Basella alba",
+    "uses": [
+      "Soothes digestive system and constipation (mild laxative, cooling)",
+      "Hydrates body and reduces inflammation",
+      "Supports skin healing (cooling paste)"
+    ],
+    "region": "South India (coastal Karnataka, Kerala gardens)",
+    "description": "Leafy vine, slimy and cooling, used in poultices and as a detoxifying vegetable.",
+    "image": "static/images/plants/6.jpeg"
+  },
+  {
+    "name": "Betel",
+    "scientific_name": "Piper betel",
+    "uses": [
+      "Aids digestion and reduces bloating (digestive stimulant, carminative)",
+      "Promotes oral hygiene and fresh breath (antimicrobial)",
+      "Detoxifies body (antioxidant)"
+    ],
+    "region": "South India (Kerala, Tamil Nadu, coastal regions)",
+    "description": "Glossy heart-shaped leaf used after meals for digestion, breath-freshening and mild detox.",
+    "image": "static/images/plants/7.jpg"
+  },
+  {
+    "name": "Brahmi",
+    "scientific_name": "Bacopa monnieri",
+    "uses": [
+      "Enhances memory and cognition (neuro-enhancing bacosides)",
+      "Reduces stress and anxiety (anxiolytic)",
+      "Acts as an antioxidant"
+    ],
+    "region": "South India (Kerala backwaters, Karnataka wetlands)",
+    "description": "Aquatic herb used in classical Ayurveda for brain and stress-relief.",
+    "image": "static/images/plants/8.webp"
+  },
+  {
+    "name": "Curry Leaf",
+    "scientific_name": "Murraya koenigii",
+    "uses": [
+      "Regulates blood sugar and manages diabetes (glucose-modulating)",
+      "Improves digestion",
+      "Supports hair & skin health (antioxidant, vitamin-rich)"
+    ],
+    "region": "South India (Kerala, Tamil Nadu, Karnataka gardens)",
+    "description": "Essential aromatic spice in cuisine and Ayurveda valued for metabolic and skin benefits.",
+    "image": "static/images/plants/9.jpg"
+  },
+  {
+    "name": "Drumstick (Moringa)",
+    "scientific_name": "Moringa oleifera",
+    "uses": [
+      "Boosts immunity and reduces inflammation (antioxidant, anti-inflammatory)",
+      "Improves digestion and nutrient absorption",
+      "Strengthens bones and supports detox organs",
+      "Helps regulate blood sugar (hypoglycemic)"
+    ],
+    "region": "South India (Tamil Nadu, Kerala, Karnataka home growing)",
+    "description": "Every part of the drum-stick tree is edible and used widely across South Indian food and medicine.",
+    "image": "static/images/plants/10.jpg"
+  },
+  {
+    "name": "Eucalyptus",
+    "scientific_name": "Eucalyptus globulus",
+    "uses": [
+      "Relieves congestion, cough and cold (expectorant, antiseptic cineole)",
+      "Reduces muscle and joint pain (analgesic)",
+      "Purifies blood and lowers fever (antimicrobial)"
+    ],
+    "region": "South India (Nilgiri hills, Western Ghats)",
+    "description": "Nilgiri tree whose oil or leaf tea eases respiratory, muscular and febrile conditions.",
+    "image": "static/images/plants/11.jpg"
+  },
+  {
+    "name": "Guava",
+    "scientific_name": "Psidium guajava",
+    "uses": [
+      "Treats diarrhea and gastrointestinal discomfort (astringent, antimicrobial)",
+      "Sore throat relief (leaf decoction antimicrobial)",
+      "Supports wound healing"
+    ],
+    "region": "South India (Tamil Nadu, Kerala, Karnataka home gardens)",
+    "description": "Guava leaves brewed into teas or poultices for digestive and throat ailments.",
+    "image": "static/images/plants/12.jpeg"
+  },
+  {
+    "name": "Henna",
+    "scientific_name": "Lawsonia inermis",
+    "uses": [
+      "Conditions hair and scalp (antifungal, cooling)",
+      "Treats fungal skin infections",
+      "Soothes minor burns and wounds"
+    ],
+    "region": "South India (dry zones of Karnataka, Tamil Nadu)",
+    "description": "Used as natural hair conditioner and antifungal topical paste.",
+    "image": "static/images/plants/13.jpg"
+  },
+  {
+    "name": "Hibiscus",
+    "scientific_name": "Hibiscus rosa-sinensis",
+    "uses": [
+      "Promotes hair growth and scalp health (nutritive)",
+      "Cools body and regulates menstruation (antioxidant)",
+      "Supports skin care (anti-inflammatory)"
+    ],
+    "region": "South India (Kerala, Tamil Nadu gardens)",
+    "description": "Flowers and leaves used traditionally in hair and skin remedies.",
+    "image": "static/images/plants/14.jpeg"
+  },
+  {
+    "name": "Jackfruit",
+    "scientific_name": "Artocarpus heterophyllus",
+    "uses": [
+      "Improves digestion (fiber-rich fruit)",
+      "Boosts immunity (vitamin-rich)",
+      "Relieves cough and throat irritation"
+    ],
+    "region": "South India (Kerala, Tamil Nadu, Karnataka orchards)",
+    "description": "Large fruit tree used for its edible fruit, seeds and latex in traditional remedies.",
+    "image": "static/images/plants/15.webp"
+  },
+  {
+    "name": "Jasmine",
+    "scientific_name": "Jasminum spp.",
+    "uses": [
+      "Reduces stress and anxiety (aromatic soothing)",
+      "Promotes restful sleep",
+      "Soothes mild skin irritation (mild anti-inflammatory)"
+    ],
+    "region": "South India (Tamil Nadu temple gardens, Kerala)",
+    "description": "Fragrant flower used in aromatherapy and gentle topical blends.",
+    "image": "static/images/plants/16.jpg"
+  },
+  {
+    "name": "Lemon",
+    "scientific_name": "Citrus limon",
+    "uses": [
+      "Treats fever, cold and headache (immune-boosting, antipyretic)",
+      "Relieves indigestion and acidity (digestive stimulant)",
+      "Brightens skin and reduces pigmentation (antimicrobial, astringent)"
+    ],
+    "region": "South India (Kerala, Tamil Nadu home gardens)",
+    "description": "Citrus fruit whose juice/pith used for colds, digestion and skin detox.",
+    "image": "static/images/plants/17.jpg"
+  },
+  {
+    "name": "Mango (leaves)",
+    "scientific_name": "Mangifera indica",
+    "uses": [
+      "Manages diabetes (tannins regulate blood sugar)",
+      "Supports digestion and heart health",
+      "Improves skin and hair tone (flavonoids, vitamins)"
+    ],
+    "region": "South India (Tamil Nadu, Kerala, Karnataka orchards)",
+    "description": "Tender mango leaves used as decoction to treat metabolic and detoxify ailments.",
+    "image": "static/images/plants/18.jpg"
+  },
+  {
+    "name": "Mint",
+    "scientific_name": "Mentha spp.",
+    "uses": [
+      "Relieves indigestion, nausea and gas (carminative)",
+      "Eases headache, cold and congestion (menthol analgesic, decongestant)",
+      "Refreshes mouth and skin (antimicrobial, cooling)"
+    ],
+    "region": "South India (Kerala, Tamil Nadu, Karnataka herb gardens)",
+    "description": "Aromatic herb used in teas and poultices for digestion, respiratory and skin freshness.",
+    "image": "static/images/plants/19.jpeg"
+  },
+  {
+    "name": "Neem",
+    "scientific_name": "Azadirachta indica",
+    "uses": [
+      "Purifies skin and treats acne/infection (antibacterial, antifungal)",
+      "Helps manage diabetes (glucose-regulating)",
+      "Supports oral health (antiviral, anti-inflammatory)"
+    ],
+    "region": "South India (Tamil Nadu, Karnataka, Andhra Pradesh)",
+    "description": "Neem is a multipurpose tree used for skin, metabolic and infection control.",
+    "image": "static/images/plants/20.jpg"
+  },
+  {
+    "name": "Papaya",
+    "scientific_name": "Carica papaya",
+    "uses": [
+      "Aids digestion (papain enzyme)",
+      "Reduces inflammation and swelling",
+      "Supports recovery in dengue cases (leaf extract platelet boosting)"
+    ],
+    "region": "South India (Tamil Nadu, Kerala gardens)",
+    "description": "Fruit and leaf used traditionally for digestion and fever-related supportive care.",
+    "image": "static/images/plants/21.jpg"
+  },
+  {
+    "name": "Pepper",
+    "scientific_name": "Piper nigrum",
+    "uses": [
+      "Stimulates digestion and appetite (digestive stimulant)",
+      "Relieves cold and cough (decongestant)",
+      "Enhances nutrient absorption"
+    ],
+    "region": "South India (Kerala Western Ghats plantations)",
+    "description": "Black pepper used in both cuisine and remedies for respiration and digestion.",
+    "image": "static/images/plants/22.jpg"
+  },
+  {
+    "name": "Pomegranate",
+    "scientific_name": "Punica granatum",
+    "uses": [
+      "Boosts immunity and reduces inflammation (antioxidant punicalagins)",
+      "Supports heart and brain health",
+      "Improves skin hydration and reduces pigmentation"
+    ],
+    "region": "South India (Tamil Nadu, Karnataka orchards)",
+    "description": "Juicy fruit used traditionally for its antioxidant, metabolic and skin benefits.",
+    "image": "static/images/plants/23.jpg"
+  },
+  {
+    "name": "Sandalwood",
+    "scientific_name": "Santalum album",
+    "uses": [
+      "Soothes skin irritations and burns (cooling, anti-inflammatory)",
+      "Relieves stress and promotes sleep (aromatic soothing)",
+      "Balances body heat (cooling tonic)"
+    ],
+    "region": "South India (Karnataka sandalwood forests)",
+    "description": "Fragrant wood used in pastes and oils topically for skin and calming.",
+    "image": "static/images/plants/24.jpeg"
+  },
+  {
+    "name": "Sapota",
+    "scientific_name": "Manilkara zapota",
+    "uses": [
+      "Relieves diarrhea (astringent fruit pulp)",
+      "Calms cough and throat irritation",
+      "Provides nutrition and energy"
+    ],
+    "region": "South India (Tamil Nadu, Karnataka orchards)",
+    "description": "Sweet pulp used traditionally for digestive and respiratory support.",
+    "image": "static/images/plants/25.jpg"
+  },
+  {
+    "name": "Tulsi",
+    "scientific_name": "Ocimum tenuiflorum",
+    "uses": [
+      "Treats fever, cold and cough (antipyretic, antimicrobial)",
+      "Reduces stress (adaptogenic)",
+      "Supports skin healing (anti-inflammatory)"
+    ],
+    "region": "South India (Tamil Nadu, Kerala, Karnataka)",
+    "description": "Holy basil widely grown across South India; boosts immunity and soothes respiration.",
+    "image": "static/images/plants/26.jpg"
+  }
+]

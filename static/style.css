@@ -1,0 +1,810 @@
+/* ---------- CSS Variables for consistent colors ---------- */
+:root {
+    --primary-green: #4a5c44;
+    --accent-green: #9fe870;
+    --text-light: #e0e0e0;
+    --text-dark: #333;
+    --card-bg-dark-transparent: rgba(74, 92, 68, 0.7);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- General Reset & Body Styles ---------- */
+html {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-light);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    scroll-behavior: smooth;
+}
+
+/* ---------- Navbar ---------- */
+.transparent-navbar {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.transparent-navbar .navbar-brand {
+    color: var(--text-light) !important;
+    font-weight: 500;
+    margin-right: auto !important; /* Pushes the custom menu to the right */
+}
+
+/* --- Custom Hover Menu Styles --- */
+.custom-menu-container {
+    position: relative;
+    height: 100%;
+    display: flex; /* Makes it a flex container to align icon */
+    align-items: center; /* Vertically centers the icon */
+    z-index: 1050;
+}
+
+.menu-icon {
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 10px; /* Padding around the icon itself */
+    color: var(--text-light);
+    display: block;
+    position: relative;
+    z-index: 1051; /* Ensures icon is on top of the menu */
+}
+
+.custom-menu-links {
+    position: absolute;
+    top: 50%; /* Vertically center with the icon's container */
+    transform: translateY(-50%); /* Adjust for perfect vertical centering */
+
+    /* Animation and visibility */
+    right: -1000px; /* Start far off-screen to the right */
+    opacity: 0;
+    visibility: hidden;
+    transition: right 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s ease-out;
+
+    /* Styling of the menu bar itself */
+    background-color: rgba(0, 0, 0, 0.85); /* Dark background for the horizontal menu bar */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 10px 15px; /* Padding inside the horizontal menu bar */
+
+    /* CRITICAL: Force horizontal display for direct children (a tags) */
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important; /* Vertically align items within the bar */
+    gap: 20px !important; /* Space between each horizontal menu item */
+    white-space: nowrap !important; /* Keep all items on one line */
+
+    box-sizing: border-box; /* Include padding in sizing */
+}
+
+.custom-menu-container:hover .custom-menu-links {
+    /* Final position: Its right edge should be X pixels to the left of the icon.
+       Calculation: (width of icon + icon's horizontal padding * 2) + desired gap */
+    right: calc(1.8rem + (2 * 10px) + 20px); /* 1.8rem (icon size) + 20px (icon total padding) + 20px (desired gap from menu to icon) */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Styles for the direct child links (a.nav-link) */
+.custom-menu-links .nav-link {
+    color: var(--text-light) !important;
+    padding: 5px 0 !important; /* Vertical padding within the horizontal bar */
+    display: block !important; /* Ensure it behaves as a block within flex */
+    transition: color 0.2s ease;
+    flex-shrink: 0; /* Prevent links from shrinking */
+}
+
+.custom-menu-links .nav-link:hover {
+    color: var(--accent-green) !important;
+    background-color: transparent !important; /* Ensure no background highlight */
+}
+
+/* Hide the default Bootstrap navbar toggler and collapse behavior */
+.navbar-toggler {
+    display: none !important;
+}
+
+.navbar-collapse {
+    display: none !important;
+}
+
+
+/* --- Revert content shifting, as menu won't cover main content anymore --- */
+@media (min-width: 769px) {
+    .hero-section,
+    .search-results-section,
+    .explore-plants-section,
+    .why-we-exist-section,
+    .latest-discoveries-section,
+    .footer-section {
+        transform: translateX(0) !important; /* Ensure content doesn't shift */
+    }
+}
+
+
+/* ---------- Hero Section ---------- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('pexels-monicore-1087902.jpg') no-repeat left center;
+    background-size: cover;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    position: relative;
+    transition: transform 0.3s ease-out;
+}
+
+.hero-left {
+    flex: 0.5;
+    height: 100%;
+    display: block;
+}
+
+.hero-right {
+    flex: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to left, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+    height: 100%;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-shadow: 3px 3px 6px var(--shadow-color);
+    margin-bottom: 40px;
+    line-height: 1.1;
+    text-align: center;
+    transition: transform 0.3s ease-out;
+}
+
+.hero-card {
+    background-color: var(--card-bg-dark-transparent);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px var(--shadow-color);
+    max-width: 550px;
+    border: 1px solid var(--border-color);
+    margin: 0 auto;
+    transition: transform 0.3s ease-out;
+}
+
+.hero-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-bottom: 20px;
+}
+
+.hero-card-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.start-identifying-btn {
+    background-color: var(--accent-green);
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    color: var(--primary-green);
+}
+
+.start-identifying-btn:hover {
+    background-color: #8cda66;
+    color: var(--primary-green);
+}
+
+/* ---------- Search Results Section ---------- */
+.search-results-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+    padding: 40px 0;
+    /* Increased margin for more separation */
+    margin-top: 100px;
+    margin-bottom: 100px; /* Increased bottom margin */
+    position: relative;
+    z-index: 5;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease-out;
+}
+
+.search-results-section .section-heading {
+    color: var(--primary-green);
+}
+
+.search-result-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.search-result-card h5 {
+    color: var(--primary-green);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+.search-result-card p, .search-result-card ul, .search-result-card li {
+    color: var(--text-dark);
+}
+.search-result-card .uses-list li {
+    font-size: 0.9em;
+    color: #555;
+}
+
+
+/* ---------- Shared Section Headings ---------- */
+.section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+/* ---------- Why We Exist / Our Mission Section ---------- */
+.why-we-exist-section {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    /* Increased margin for more separation */
+    margin-top: 100px;
+    margin-bottom: 100px;
+    overflow: hidden;
+    transition: transform 0.3s ease-out;
+}
+
+.mission-text-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.section-heading-dark {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.section-subheading-dark {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1;
+}
+
+.mission-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.mission-images {
+    flex: 0.7;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+}
+
+.mission-img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: none !important;
+    margin-left: 0 !important;
+}
+
+.mission-img:first-child {
+    grid-area: 1 / 1 / 3 / 2;
+    height: 100%;
+}
+
+.mission-img:nth-child(2) {
+    grid-area: 1 / 2 / 2 / 3;
+    height: 100%;
+}
+
+.mission-img:nth-child(3) {
+    grid-area: 2 / 2 / 3 / 3;
+    height: 100%;
+}
+/* ---------- Explore Plants Section ---------- */
+.explore-plants-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    /* Increased margin for more separation */
+    margin-top: 400px;
+    margin-bottom: 400px;
+    overflow: hidden;
+    transition: transform 0.3s ease-out;
+}
+
+.explore-text-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.explore-plants-section .section-heading-dark {
+    color: var(--primary-green);
+}
+
+.explore-plants-section .section-subheading-dark {
+    color: #333;
+}
+
+.explore-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+.explore-images {
+    flex: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    height: 440px;
+}
+
+.explore-img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: none;
+    margin-left: 0;
+}
+
+.explore-img:first-child,
+.explore-img:nth-child(2),
+.explore-img:nth-child(3) {
+    grid-area: unset;
+    height: 100%;
+}
+
+/* ---------- Latest Discoveries Section ---------- */
+.latest-discoveries-section {
+    background-color: var(--card-bg-dark-transparent);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    padding: 60px 40px !important;
+    /* Increased margin for more separation */
+    margin-top: 100px;
+    margin-bottom: 100px;
+    transition: transform 0.3s ease-out;
+}
+
+.latest-discoveries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.discovery-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.discovery-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+.discovery-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.discovery-card .card-body {
+    padding: 20px;
+}
+
+.discovery-card .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent-green);
+    margin-bottom: 10px;
+}
+
+.discovery-card .card-text {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.card-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- Footer ---------- */
+.footer-section {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--text-light);
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    /* Increased margin for more separation */
+    margin-top: 100px;
+    /* No bottom margin needed here as it's the last section */
+    transition: transform 0.3s ease-out;
+}
+
+.footer-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-bottom: 5px;
+}
+
+.footer-subheading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.footer-subheading-small {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.footer-link {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--accent-green);
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Custom styles for feedback input */
+.custom-feedback-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    resize: vertical;
+
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+
+.custom-feedback-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* ---------- Responsive Adjustments ---------- */
+/* No content shifting needed for this horizontal pop-out menu */
+@media (min-width: 769px) {
+    .hero-section,
+    .search-results-section,
+    .explore-plants-section,
+    .why-we-exist-section,
+    .latest-discoveries-section,
+    .footer-section {
+        transform: translateX(0) !important; /* Ensure content doesn't shift */
+    }
+}
+
+
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+        padding-top: 80px;
+        padding-bottom: 30px;
+    }
+
+    .hero-left, .hero-right {
+        flex: none;
+        width: 100%;
+        height: auto;
+        padding: 30px 15px;
+    }
+
+    .hero-left {
+        display: block;
+        background: url('pexels-monicore-1087902.jpg') no-repeat center center;
+        background-size: cover;
+        min-height: 300px;
+    }
+
+    .main-title {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .hero-card-title {
+        font-size: 2rem;
+    }
+
+    .hero-card {
+        padding: 30px;
+    }
+
+    .search-results-section {
+        margin-top: 30px; /* Adjusted for smaller screens */
+        padding: 30px 15px;
+    }
+
+    .why-we-exist-section, .explore-plants-section {
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 20px;
+        max-width: 80%;
+        margin-top: 50px; /* Adjusted for smaller screens */
+        margin-bottom: 50px; /* Adjusted for smaller screens */
+    }
+
+    .mission-images, .explore-images {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 15px;
+        padding: 0;
+        max-width: 100%;
+    }
+    .mission-img:first-child, .explore-img:first-child,
+    .mission-img:nth-child(2), .explore-img:nth-child(2),
+    .mission-img:nth-child(3), .explore-img:nth-child(3) {
+        grid-area: auto !important;
+        transform: none !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+        height: 200px;
+        object-position: center !important;
+    }
+
+    .latest-discoveries-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-right {
+        text-align: start !important;
+        margin-top: 30px;
+    }
+
+    .custom-feedback-input {
+        max-width: 100%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* For smaller screens, the custom menu should likely be hidden
+       or transform into a more standard mobile menu (e.g., Bootstrap's default toggler).
+       For now, it will remain horizontal but might not fit well. */
+    .custom-menu-links {
+        /* This will make the menu appear fully on smaller screens, potentially overflowing */
+        right: 0 !important; /* Bring it fully into view from the right */
+        transform: translateY(-50%) translateX(0) !important; /* Override initial transform */
+        width: auto !important; /* Allow width to be content-driven */
+        min-width: unset !important; /* Remove min-width */
+        padding: 10px !important; /* Adjust padding */
+        box-shadow: none !important; /* Remove side shadow if full width */
+        border-radius: 0 !important; /* Remove border-radius if full width */
+        /* If you want it hidden on mobile and toggled by a click, this is where you'd hide it: */
+        /* display: none !important; */
+    }
+
+    /* Removed empty ruleset for .custom-menu-container:hover .custom-menu-links */
+
+    /* Styles for direct child links in custom-menu-links on smaller screens */
+    .custom-menu-links .nav-link {
+        padding: 5px 10px !important; /* Compact padding for mobile horizontal */
+        margin: 0 !important;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-card-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-card {
+        padding: 20px;
+    }
+
+    .why-we-exist-section, .latest-discoveries-section, .explore-plants-section {
+        padding: 25px 15px !important;
+    }
+
+    .section-heading, .section-heading-dark {
+        font-size: 2rem;
+    }
+
+    .section-subheading-dark {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .hero-card-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-card {
+        padding: 20px;
+    }
+}
+
+
+
+
+
+/* Chatbot Styles */
+.chatbot-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+}
+.chatbot-header {
+    background: #28a745;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    position: relative;
+}
+.chatbot-header .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+.chatbot-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+.bot-message, .user-message {
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+.bot-message {
+    background: #e9ecef;
+    align-self: flex-start;
+}
+.user-message {
+    background: #28a745;
+    color: white;
+    align-self: flex-end;
+}
+.chatbot-input {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+.chatbot-input input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+}
+.chatbot-input button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+}
+.floating-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
