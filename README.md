@@ -57,10 +57,11 @@ https://drive.google.com/file/d/1HoTd4IcXIf-IhjXMBSOMUJkutuxcFSz3/view?usp=shari
 
 ---
 
-**plant images (Google Drive):**
+##**plant images (Google Drive):**
 https://drive.google.com/drive/folders/1LXpKgfwSkOLPQM1Jnh04qQMQchielhTP?usp=sharing
 
 After downloading, place the plant folder in:
 static/images/plants/
+
 
 
