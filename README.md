@@ -25,7 +25,8 @@ botanical applications.
 
 ---
 
-## Project Structure'''
+## Project Structure
+
 Medicinal_plant_recognition/
 ├── app.py
 ├── create_db.py
@@ -36,7 +37,7 @@ Medicinal_plant_recognition/
 │   └── images/
 │       └── plants/
 └── README.md
-'''
+
 ---
 
 ##Dataset
@@ -62,6 +63,7 @@ https://drive.google.com/drive/folders/1LXpKgfwSkOLPQM1Jnh04qQMQchielhTP?usp=sha
 
 After downloading, place the plant folder in:
 static/images/plants/
+
 
 
 
