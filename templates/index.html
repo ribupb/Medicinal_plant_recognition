@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herbal Insights</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top transparent-navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-light" href="/">
+            <img src="{{ url_for('static', filename='leaf-removebg-preview.png') }}" alt="Herbal Insights Logo" style="height: 30px; margin-right: 5px;">
+            Herbal Insights
+        </a>
+        
+        <div class="ms-auto position-relative custom-menu-container">
+            <div class="menu-icon text-light">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="custom-menu-links">
+                <a class="nav-link text-light" href="/">Home</a>
+                <a class="nav-link text-light" href="/all-plants">Explore Plants</a>
+                <a class="nav-link text-light" href="#mission-section">Mission</a>
+                <a class="nav-link text-light" href="#discoveries-section">Discoveries</a>
+                <a class="nav-link text-light" href="#contact-section">Community Feedback</a>
+                </div>
+            </div> </div> </nav>
+
+<div class="hero-section">
+    <div class="hero-left"></div>
+    <div class="hero-right">
+        <h1 class="main-title" data-aos="fade-up" data-aos-duration="1000">Identify your plant now</h1>
+        <div class="hero-card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+            <h2 class="hero-card-title">Your Plant Identification Hub</h2>
+            <p class="hero-card-text">Easily upload your plant pictures and let us assist you in identifying them. Our platform is intuitive, enabling you to learn about various medicinal plants.</p>
+            <button type="button" class="btn btn-primary start-identifying-btn" data-bs-toggle="modal" data-bs-target="#identifyPlantModal" data-aos="fade-up" data-aos-delay="600">
+                Start Identifying
+            </button>
+        </div>
+    </div>
+</div>
+
+{% if search_result %}
+<div class="container search-results-section" id="search-results-section" data-aos="fade-up">
+    <h2 class="section-heading text-center mb-4">Search Results</h2>
+    <div class="row justify-content-center">
+        {% for plant in search_result %}
+        <div class="col-md-8" data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
+            <div class="search-result-card">
+                <h5>{{ plant.name }}</h5>
+                <p><strong>Scientific Name:</strong> <em>{{ plant.scientific_name }}</em></p>
+                <p><strong>Region:</strong> {{ plant.region }}</p>
+                <p><strong>Description:</strong> {{ plant.description }}</p>
+                {% if plant.uses %}
+                <p><strong>Uses:</strong></p>
+                <ul class="uses-list">
+                    {% for use in plant.uses %}
+                    <li>{{ use }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+<div class="modal fade" id="identifyPlantModal" tabindex="-1" aria-labelledby="identifyPlantModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="identifyPlantModalLabel">Identify Your Plant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <input type="file" id="plantImageInput" class="form-control mb-3" accept="image/*" required>
+                <div id="previewContainer" class="mt-4 mb-4" style="display: none;">
+                    <h6>Image Preview:</h6>
+                    <img id="imagePreview" src="#" alt="Image Preview" class="img-fluid rounded shadow-sm" style="max-height: 200px; object-fit: contain;">
+                </div>
+
+                <button type="button" class="btn btn-success btn-lg" id="predictButton">Identify Plant</button>
+
+                <div id="loadingIndicator" class="mt-4" style="display: none;">
+                    <div class="spinner-border text-success" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Identifying your plant...</p>
+                </div>
+
+                <div id="predictionResult" class="mt-4"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container explore-plants-section py-5 my-5" id="explore-plants-section" data-aos="fade-right">
+    <div class="explore-text-content">
+        <h2 class="section-heading-dark" data-aos="fade-right">Deep Dive</h2>
+        <h3 class="section-subheading-dark" data-aos="fade-right" data-aos-delay="100">Explore Our Plant Database</h3>
+        <p class="explore-paragraph" data-aos="fade-right" data-aos-delay="200">
+            Unlock the vast world of medicinal plants. Our comprehensive database provides detailed insights into various species, their scientific names, traditional uses, regional origins, and unique properties. Start your journey of discovery now!
+        </p>
+        <div class="text-center text-md-start mt-4" data-aos="fade-right" data-aos-delay="300">
+            <a href="/all-plants" class="btn btn-primary start-identifying-btn">View All Plants</a>
+        </div>
+    </div>
+    <div class="explore-images" data-aos="fade-left">
+        <img src="{{ url_for('static', filename='Gemini_Generated_Image_uqxugmuqxugmuqxu (1).png') }}" alt="Herbal database illustration" class="img-fluid explore-img rounded">
+    </div>
+</div>
+
+<div class="container why-we-exist-section py-5 my-5" id="mission-section" data-aos="fade-left">
+    <div class="mission-text-content">
+        <h2 class="section-heading-dark" data-aos="fade-left">Our Mission</h2>
+        <h3 class="section-subheading-dark" data-aos="fade-left" data-aos-delay="100">Why We Exist</h3>
+        <p class="mission-paragraph" data-aos="fade-left" data-aos-delay="200">
+            Medicinal plant recognition is a dedicated platform for anyone interested in identifying medicinal plants. Users can upload pictures to receive instant identifications based on our advanced plant recognition technology. Emphasizing educational resources, we empower users with knowledge to appreciate nature's healing properties.
+        </p>
+    </div>
+    <div class="mission-images" data-aos="fade-right">
+        <img src="{{ url_for('static', filename='Person_holding_a_plant.jpg') }}" alt="Person holding a plant" class="img-fluid mission-img rounded" data-aos="fade-up">
+        <img src="{{ url_for('static', filename='Person_in_lab_with_plants.jpg') }}" alt="Person in lab with plants" class="img-fluid mission-img rounded" data-aos="fade-up" data-aos-delay="100">
+        <img src="{{ url_for('static', filename='Indoor_plants.jpg') }}" alt="Indoor plants by window" class="img-fluid mission-img rounded" data-aos="fade-up" data-aos-delay="200">
+    </div>
+</div>
+
+
+<div class="container latest-discoveries-section py-5 my-5" id="discoveries-section" data-aos="fade-up">
+    <h2 class="section-heading text-center mb-5" data-aos="fade-up">Latest Insights & Community Finds</h2>
+    <div class="latest-discoveries-grid">
+        <div class="discovery-card" data-aos="zoom-in" data-aos-delay="0">
+            <img src="{{ url_for('static', filename='Basil gardening (1).jpg') }}" alt="Research on basil" class="img-fluid rounded-top">
+            <div class="card-body">
+                <h6 class="card-title">New Compounds in Basil for Anti-Inflammatory Effects</h6>
+                <p class="card-text">Researchers identified novel triterpenoids in Ocimum basilicum (sweet basil) demonstrating significant anti-inflammatory activity.</p>
+                <div class="card-stats">
+                    <span>🔬 Research</span>
+                    <span>Published: May 2025</span>
+                </div>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9602197/" target="_blank" class="btn btn-sm btn-outline-success mt-3">Read More</a>
+            </div>
+        </div>
+
+        <div class="discovery-card" data-aos="zoom-in" data-aos-delay="100">
+            <img src="{{ url_for('static', filename='Gemini_Generated_Image_z3l8laz3l8laz3l8 (1) (1).png') }}" alt="Clinical trial on ginger" class="img-fluid rounded-top">
+            <div class="card-body">
+                <h6 class="card-title">Clinical Trial Shows Efficacy of Ginger for Nausea</h6>
+                <p class="card-text">A recent double-blind study confirms the effectiveness of Zingiber officinale (ginger) extract in reducing post-operative nausea.</p>
+                <div class="card-stats">
+                    <span>🧪 Clinical Trial</span>
+                    <span>Published: June 2025</span>
+                </div>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4818021/" target="_blank" class="btn btn-sm btn-outline-success mt-3">Read More</a>
+            </div>
+        </div>
+
+        <div class="discovery-card" data-aos="zoom-in" data-aos-delay="200">
+            <img src="{{ url_for('static', filename='orchid (2).jpg') }}" alt="Rare plant identified by user" class="img-fluid rounded-top">
+            <div class="card-body">
+                <h6 class="card-title">Rare Orchid Spotted in Western Ghats!</h6>
+                <p class="card-text">Community member @GreenThumbGuru shared a stunning identification of a rare endemic orchid, Vanilla planifolia. A truly exciting find!</p>
+                <div class="card-stats">
+                    <span>✨ Community Find</span>
+                    <span>Identified by: @GreenThumbGuru</span>
+                    <span>Published: July 2025</span>
+                </div>
+                <a href="https://timesofindia.indiatimes.com/city/pune/new-species-of-orchid-found-in-western-ghats/articleshow/72553391.cms" target="_blank" class="btn btn-sm btn-outline-success mt-3">View Discovery</a>
+            </div>
+        </div>
+
+        <div class="discovery-card" data-aos="zoom-in" data-aos-delay="300">
+            <img src="{{ url_for('static', filename='Gemini_Generated_Image_z3l8laz3l8laz3l8 (2).png') }}" alt="Aloe vera plant" class="img-fluid rounded-top">
+            <div class="card-body">
+                <h6 class="card-title">User Story: Aloe Vera's Soothing Powers</h6>
+                <p class="card-text">Our user @HerbHealer shared how they easily identified Aloe barbadensis miller and used it to soothe a minor burn, thanks to our platform.</p>
+                <div class="card-stats">
+                    <span>🌟 User Story</span>
+                    <span>Shared by: @HerbHealer</span>
+                    <span>Published: April 2025</span>
+                </div>
+                <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2763764/" target="_blank" class="btn btn-sm btn-outline-success mt-3">Read Story</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-section py-4 mt-5" id="contact-section" data-aos="fade-up">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 footer-left">
+                <h4 class="footer-heading">Medicinal plant recognition</h4>
+                <h3 class="footer-subheading">Connect for Plant Insights</h3>
+            </div>
+            <div class="col-md-6 footer-right text-md-end">
+                <h5 class="footer-subheading-small text-right">Send Us Feedback</h5>
+                <form id="feedbackForm" class="text-start mb-4">
+
+
+                    <div class="mb-3">
+                        <label for="feedbackMessage" class="form-label visually-hidden">Your Message</label>
+                        <textarea class="form-control custom-feedback-input" id="feedbackMessage" name="message" rows="3" placeholder="Your feedback helps us improve!" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="feedbackEmail" class="form-label visually-hidden">Your Email</label>
+                        <input type="email" class="form-control custom-feedback-input" id="feedbackEmail" name="_replyto" placeholder="Your Email">
+                    </div>
+
+
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary start-identifying-btn">Submit Feedback</button>
+                    </div>
+                    <p id="feedbackStatus" style="margin-top:10px; font-weight:bold;"></p>
+
+                </form>
+                <p class="mt-4">
+                    <a href="https://github.com/your-project-repo" target="_blank" class="footer-link">View Project on GitHub</a>
+                </p>
+            </div>
+        </div>
+        <div class="text-center copyright mt-4">
+            <p>&copy; 2025 Herbal Insights. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<!-- Chatbot -->
+<div class="chatbot-container" id="chatbot" style="display:none; flex-direction:column;">
+    <div class="chatbot-header">
+        <span>Herbal Assistant</span>
+        <button class="close-btn" onclick="toggleChatbot()">×</button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+        <div class="bot-message">Hi! Ask me about medicinal plants 🌿</div>
+    </div>
+    <div class="chatbot-input">
+        <input type="text" id="userInput" placeholder="Ask something...">
+        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<!-- Floating Chat Icon -->
+<div class="floating-chat" onclick="toggleChatbot()">
+    <i class="fas fa-comment-dots"></i>
+</div>
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000, // values from 0 to 3000, with step 50ms
+        easing: 'ease-in-out', // default easing for AOS animations
+        once: true, // whether animation should happen only once - while scrolling down
+        mirror: false, // whether elements should animate out while scrolling past them
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const plantImageInput = document.getElementById('plantImageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewContainer = document.getElementById('previewContainer');
+        const predictButton = document.getElementById('predictButton');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const predictionResult = document.getElementById('predictionResult');
+
+        // Only add event listeners if the elements exist (relevant for all_plants.html as well)
+        if (plantImageInput) {
+            plantImageInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                        previewContainer.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    previewContainer.style.display = 'none';
+                    imagePreview.src = '#';
+                }
+            });
+        }
+
+        if (predictButton) {
+            predictButton.addEventListener('click', async () => {
+                const file = plantImageInput.files[0];
+                if (!file) {
+                    predictionResult.innerHTML = '<div class="alert alert-warning" role="alert">Please select an image file first.</div>';
+                    return;
+                }
+
+                predictionResult.innerHTML = '';
+                loadingIndicator.style.display = 'block';
+                predictButton.disabled = true;
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const response = await fetch('/predict_api', { method: 'POST', body: formData });
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || `HTTP error! Status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    loadingIndicator.style.display = 'none';
+
+                    let htmlContent = '';
+                    const confidencePercent = (result.confidence * 100).toFixed(2);
+                    let confidenceBarClass = result.confidence > 0.75 ? 'high' : (result.confidence > 0.40 ? 'medium' : 'low');
+
+                    if (result.prediction === 'Unknown') {
+                        htmlContent += `
+                            <div class="alert alert-warning mt-3" role="alert">
+                                <h4 class="alert-heading">Unsure about this plant...</h4>
+                                <p>We couldn't confidently identify this plant. AI confidence was ${confidencePercent}%.</p>
+                                <div class="confidence-bar">
+                                    <div class="confidence-level ${confidenceBarClass}" style="width: ${confidencePercent}%">${confidencePercent}% Confidence</div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        htmlContent += `
+                            <div class="alert alert-success mt-3" role="alert">
+                                <h4 class="alert-heading">Predicted Plant: ${result.prediction}</h4>
+                                <p>We are confident about this identification.</p>
+                                <div class="confidence-bar">
+                                    <div class="confidence-level ${confidenceBarClass}" style="width: ${confidencePercent}%">${confidencePercent}% Confidence</div>
+                                </div>
+                            </div>
+                        `;
+                        if (result.plant_details) {
+                            htmlContent += `
+                                <hr>
+                                <h6>About ${result.prediction}:</h6>
+                                <p><strong>Scientific Name:</strong> <em>${result.plant_details.scientific_name || 'N/A'}</em></p>
+                                <p><strong>Region:</strong> ${result.plant_details.region || 'N/A'}</p>
+                                <p><strong>Description:</strong> ${result.plant_details.description || 'N/A'}</p>
+                                <p><strong>Uses:</strong> ${result.plant_details.uses ? result.plant_details.uses.join(', ') : 'N/A'}</p>
+                            `;
+                        }
+                        htmlContent += `</div>`;
+                    }
+
+                    htmlContent += `
+                        <button type="button" class="btn btn-outline-primary mt-3" id="tryAnotherImageButton">Try Another Image</button>
+                    `;
+                    predictionResult.innerHTML = htmlContent;
+
+                    document.getElementById('tryAnotherImageButton').addEventListener('click', () => {
+                        plantImageInput.value = '';
+                        imagePreview.src = '#';
+                        previewContainer.style.display = 'none';
+                        predictionResult.innerHTML = '';
+                        predictButton.disabled = false;
+                    });
+
+                } catch (error) {
+                    console.error('Error during prediction:', error);
+                    loadingIndicator.style.display = 'none';
+                    predictionResult.innerHTML = `<div class="alert alert-danger mt-3" role="alert">Error identifying plant: ${error.message}. Please try again.</div>`;
+                }
+            });
+        }
+
+        const identifyPlantModal = document.getElementById('identifyPlantModal');
+        if (identifyPlantModal) {
+            identifyPlantModal.addEventListener('hidden.bs.modal', () => {
+                if (plantImageInput) plantImageInput.value = '';
+                if (imagePreview) imagePreview.src = '#';
+                if (previewContainer) previewContainer.style.display = 'none';
+                if (predictionResult) predictionResult.innerHTML = '';
+                if (loadingIndicator) loadingIndicator.style.display = 'none';
+                if (predictButton) predictButton.disabled = false;
+            });
+        }
+    });
+
+
+
+</script>
+
+
+<script>
+function toggleChatbot() {
+    const chatbot = document.getElementById('chatbot');
+    chatbot.style.display = chatbot.style.display === 'flex' ? 'none' : 'flex';
+}
+
+async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    addMessage(message, 'user');
+    input.value = '';
+
+    // Send message to backend
+    const response = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+    });
+
+    const data = await response.json();
+    addMessage(data.reply, 'bot');
+}
+
+function addMessage(text, sender) {
+    const chatMessages = document.getElementById('chatMessages');
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+    msgDiv.textContent = text;
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+</script>
+
+
+
+
+<script>
+    document.getElementById("feedbackForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const message = document.getElementById("feedbackMessage").value;
+    const email = document.getElementById("feedbackEmail").value;
+    const formData = { user_name: "Anonymous", email: email, message: message };
+
+    const response = await fetch("/submit_feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+        alert("Thank you for your feedback!");
+        document.getElementById("feedbackMessage").value = "";
+        document.getElementById("feedbackEmail").value = "";
+    }
+});
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

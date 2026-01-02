@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Medicinal Plants - Herbal Insights</title>
+    <link rel="icon" href="static/favicon.ico">
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #fff;
+            text-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        p, li {
+            color: #444;
+        }
+
+        .page-header p {
+            color: #ddd;
+        }
+
+        .page-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 40px 20px;
+            margin: 80px auto 20px;
+            width: 85%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInHeader 1s ease-in-out;
+        }
+
+
+        /* Search Container */
+        .search-container {
+            margin-top: 20px;
+            position: relative;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            color: #000;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .search-container .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+            font-size: 20px;
+        }
+
+        /* Suggestion Text */
+        .search-suggestions {
+            font-size: 0.9rem;
+            color: #fff;
+            margin-top: 8px;
+            text-align: center;
+            font-style: italic;
+            animation: fadeIn 1s;
+        }
+
+        /* Flip card styles */
+        .flip-card {
+            background: transparent;
+            perspective: 1000px;
+            height: 400px;
+            margin: auto;
+            animation: slideUp 1s ease-in-out;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            overflow: hidden;
+            color: #000;
+        }
+        .flip-card-front img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .flip-card-content {
+            padding: 15px;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .flip-btn {
+            margin-top: 10px;
+            background: linear-gradient(135deg, #28a745, #218838);
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 6px 14px;
+            cursor: pointer;
+        }
+        .flip-btn:hover {
+            background: linear-gradient(135deg, #218838, #1e7e34);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeInHeader {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0,0,0,0.8);
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .nav-link:hover {
+            color: #28a745 !important;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            position: relative;
+        }
+
+        /* Floating Home Button */
+        .floating-home {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .floating-home:hover {
+            transform: scale(1.1);
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top transparent-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-light" href="/">
+                <img src="static/leaf-removebg-preview.png" alt="Herbal Insights Logo" style="height: 30px; margin-right: 5px;">
+                Herbal Insights
+            </a>
+            <div class="ms-auto">
+                <a href="/" class="nav-home-icon"><i class="bi bi-house-fill"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header with Search -->
+    <div class="page-header text-center">
+        <h1><i class="bi bi-leaf-fill"></i> Explore Medicinal Plants</h1>
+        <p>A comprehensive directory of herbal insights.</p>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by plant or disease...">
+            <i class="bi bi-search search-icon"></i>
+        </div>
+        <div class="search-suggestions" id="suggestionText">Try searching for Aloe Vera...</div>
+    </div>
+
+    <!-- Plant Grid -->
+    <div class="container plant-grid-container">
+        <div class="row g-4" id="plantGrid">
+            <!-- Cards will be injected here by JS -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section py-4 mt-5" id="contact-section">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Herbal Insights. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Home Button -->
+    <a href="/" class="floating-home"><i class="bi bi-house-door-fill"></i></a>
+
+    <script>
+        const suggestions = [
+            "Try searching for Aloe Vera...",
+            "Find plants for cold and cough...",
+            "Discover herbs for fever...",
+            "Search by plant name or disease..."
+        ];
+        let suggestionIndex = 0;
+        setInterval(() => {
+            suggestionIndex = (suggestionIndex + 1) % suggestions.length;
+            document.getElementById('suggestionText').innerText = suggestions[suggestionIndex];
+        }, 3000);
+
+        function flipCard(button) {
+            button.closest('.flip-card').classList.toggle('flipped');
+        }
+
+        // Load JSON and populate grid
+        let allPlants = [];
+        const grid = document.getElementById('plantGrid');
+        const searchInput = document.getElementById('searchInput');
+
+        fetch('static/plant_info.json')
+            .then(response => response.json())
+            .then(plants => {
+                allPlants = plants;
+                renderPlants(plants);
+            })
+            .catch(error => {
+                grid.innerHTML = `<p class="text-center text-danger">Failed to load plant data.</p>`;
+                console.error('Error loading JSON:', error);
+            });
+
+        function renderPlants(plants) {
+            grid.innerHTML = '';
+            if (plants.length === 0) {
+                grid.innerHTML = `<p class="text-center text-warning">No matching plants found.</p>`;
+                return;
+            }
+            plants.forEach(plant => {
+                const usesList = (plant.uses && plant.uses.length > 0) 
+                    ? plant.uses.map(use => `<li>${use}</li>`).join('')
+                    : '<li>No specific uses listed.</li>';
+
+                grid.innerHTML += `
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="${plant.image || 'static/default_plant.jpg'}" alt="${plant.name}">
+                                    <div class="flip-card-content">
+                                        <h5>${plant.name}</h5>
+                                        <p><strong>Scientific Name:</strong> <em>${plant.scientific_name || 'N/A'}</em></p>
+                                        <p><i class="bi bi-geo-alt-fill text-success"></i> ${plant.region || 'Unknown'}</p>
+                                        <button class="flip-btn" onclick="flipCard(this)">See Details</button>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <p><strong>Description:</strong> ${plant.description || 'No description available.'}</p>
+                                    <p><strong><i class="bi bi-leaf-fill text-success"></i> Uses:</strong></p>
+                                    <ul class="text-start">${usesList}</ul>
+                                    <button class="flip-btn" onclick="flipCard(this)">Back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // Search filter
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            const filtered = allPlants.filter(plant => 
+                plant.name.toLowerCase().includes(query) ||
+                plant.uses.some(use => use.toLowerCase().includes(query))
+            );
+            renderPlants(filtered);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
