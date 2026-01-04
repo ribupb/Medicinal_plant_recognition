@@ -266,6 +266,11 @@ def show_all_plants():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 
+@app.route("/healthz")
+def healthz():
+    return "OK", 200
+
+
 
 
 
