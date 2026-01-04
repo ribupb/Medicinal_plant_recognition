@@ -40,12 +40,11 @@ def get_db_connection():
 
 # ----------------- LOAD MODEL -----------------
 MODEL_PATH = "medicinal_model_1.keras"
-DRIVE_URL = "https://drive.google.com/uc?id=1HoTd4lCXIf-hjXMBSOMUJukutuxcFSz3"
+MODEL_DRIVE_URL = "https://drive.google.com/uc?id=1HoTd4IcXIf-IhjXMBSOMUJkutuxcFSz3"
 
-try:
-    if not os.path.exists(MODEL_PATH):
-        print("Downloading model from Google Drive...")
-        gdown.download(DRIVE_URL, MODEL_PATH, quiet=False)
+if not os.path.exists(MODEL_PATH):
+    print("Model not found locally. Downloading from Google Drive...")
+    gdown.download(MODEL_DRIVE_URL, MODEL_PATH, quiet=False)
 
     model = keras.models.load_model(MODEL_PATH)
     print("Model loaded successfully!")
@@ -258,4 +257,5 @@ def show_all_plants():
 # Run App
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+
 
