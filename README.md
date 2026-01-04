@@ -64,6 +64,10 @@ https://drive.google.com/drive/folders/1LXpKgfwSkOLPQM1Jnh04qQMQchielhTP
 After downloading, place the plant folder in:
 static/images/plants/
 
+## 🚀 Live Demo
+🔗 https://medicinal-plant-recognition-1.onrender.com
+
+⚠️ Note: First request may take ~30–60 seconds due to free-tier cold start.
 
 
 
