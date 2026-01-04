@@ -54,15 +54,16 @@ https://drive.google.com/drive/folders/1Cf4xjChTd12JvJgrFmzGvCxBFq17s5lU?usp=sha
 - Model files not included due to size constraints
 
 🔗 **Trained model (Google Drive):**  
-https://drive.google.com/file/d/1HoTd4IcXIf-IhjXMBSOMUJkutuxcFSz3/view?usp=sharing
+https://drive.google.com/uc?id=1HoTd4IcXIf-IhjXMBSOMUJkutuxcFSz3
 
 ---
 
 ##**plant images (Google Drive):**
-https://drive.google.com/drive/folders/1LXpKgfwSkOLPQM1Jnh04qQMQchielhTP?usp=sharing
+https://drive.google.com/drive/folders/1LXpKgfwSkOLPQM1Jnh04qQMQchielhTP
 
 After downloading, place the plant folder in:
 static/images/plants/
+
 
 
 
