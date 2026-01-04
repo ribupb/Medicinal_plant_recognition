@@ -261,14 +261,16 @@ def show_all_plants():
     plants = conn.execute("SELECT * FROM plants ORDER BY name ASC").fetchall()
     conn.close()
     return render_template("all_plants.html", plants=[dict(p) for p in plants])
+@app.route("/healthz")
+def healthz():
+    return "OK", 200
 
 # Run App
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 
-@app.route("/healthz")
-def healthz():
-    return "OK", 200
+
+
 
 
 
