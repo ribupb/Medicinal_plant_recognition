@@ -9,7 +9,7 @@ botanical applications.
 
 ##Features
 - Leaf image–based plant classification
-- CNN model using TensorFlow / Keras
+- CNN model(MobileNetV2)) using TensorFlow / Keras
 - Flask-based web application
 - SQLite database for medicinal information
 
@@ -68,6 +68,7 @@ static/images/plants/
 🔗 https://medicinal-plant-recognition-1.onrender.com
 
 ⚠️ Note: First request may take ~30–60 seconds due to free-tier cold start.
+
 
 
 
