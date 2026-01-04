@@ -71,7 +71,9 @@ except FileNotFoundError:
 def preprocess_image(img_path, target_size=(224, 224)):
     try:
         img = Image.open(img_path).convert("RGB")
+        img.thumbnail((224, 224))
         img = img.resize(target_size)
+
         img_array = np.array(img) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
         return img_array
@@ -262,7 +264,9 @@ def show_all_plants():
 
 # Run App
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
+
+
 
 
 
