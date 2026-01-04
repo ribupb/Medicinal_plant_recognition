@@ -39,26 +39,32 @@ def get_db_connection():
     return conn
 
 # ----------------- LOAD MODEL -----------------
+import gdown
+
 MODEL_PATH = "medicinal_model_1.keras"
 MODEL_DRIVE_URL = "https://drive.google.com/uc?id=1HoTd4IcXIf-IhjXMBSOMUJkutuxcFSz3"
 
-if not os.path.exists(MODEL_PATH):
-    print("Model not found locally. Downloading from Google Drive...")
-    gdown.download(MODEL_DRIVE_URL, MODEL_PATH, quiet=False)
+model = None
+
+try:
+    if not os.path.exists(MODEL_PATH):
+        print("Model not found locally. Downloading from Google Drive...")
+        gdown.download(MODEL_DRIVE_URL, MODEL_PATH, quiet=False)
 
     model = keras.models.load_model(MODEL_PATH)
-    print("Model loaded successfully!")
+    print(f"Model '{MODEL_PATH}' loaded successfully!")
+
 except Exception as e:
-    print(f"Error loading model: {e}")
+    print(f"Error loading model '{MODEL_PATH}': {e}")
     model = None
+
+
 
 # ----------------- LOAD CLASS LABELS -----------------
 try:
     with open(CLASS_LABELS_PATH, "r") as f:
         class_labels = [line.strip() for line in f]
-    print(f"Class labels loaded: {class_labels}")
 except FileNotFoundError:
-    print(f"Error: '{CLASS_LABELS_PATH}' not found.")
     class_labels = []
 
 # ----------------- IMAGE PREPROCESSING -----------------
@@ -257,5 +263,6 @@ def show_all_plants():
 # Run App
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+
 
 
