@@ -4,4 +4,4 @@ opencv-python
 tensorflow
 keras
 pillow
-sqlite3
+gdown
