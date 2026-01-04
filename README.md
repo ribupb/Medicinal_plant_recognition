@@ -44,7 +44,7 @@ Medicinal_plant_recognition/
 - ~20,000 medicinal plant leaf images  
 - Covers **27 medicinal plant species**, with approximately **700–800 images per species**
 - Dataset not included due to GitHub size limits
-- 📌 Note: The model is trained to recognize **only these 27 medicinal plant species**
+- 📌 Note: Currently the model is trained to recognize **27 medicinal plant species**
 
 
 🔗 **Dataset (Google Drive):**  
@@ -71,6 +71,7 @@ static/images/plants/
 🔗 https://medicinal-plant-recognition-1.onrender.com
 
 ⚠️ Note: First request may take ~30–60 seconds due to free-tier cold start.
+
 
 
 
