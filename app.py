@@ -3,6 +3,8 @@ import random
 import numpy as np
 from datetime import datetime
 import sqlite3
+import gdown
+
 
 # Flask imports
 from flask import Flask, render_template, request, jsonify, send_file
@@ -37,11 +39,18 @@ def get_db_connection():
     return conn
 
 # ----------------- LOAD MODEL -----------------
+MODEL_PATH = "medicinal_model_1.keras"
+DRIVE_URL = "https://drive.google.com/uc?id=1HoTd4lCXIf-hjXMBSOMUJukutuxcFSz3"
+
 try:
+    if not os.path.exists(MODEL_PATH):
+        print("Downloading model from Google Drive...")
+        gdown.download(DRIVE_URL, MODEL_PATH, quiet=False)
+
     model = keras.models.load_model(MODEL_PATH)
-    print(f"Model '{MODEL_PATH}' loaded successfully!")
+    print("Model loaded successfully!")
 except Exception as e:
-    print(f"Error loading model '{MODEL_PATH}': {e}")
+    print(f"Error loading model: {e}")
     model = None
 
 # ----------------- LOAD CLASS LABELS -----------------
@@ -249,3 +258,4 @@ def show_all_plants():
 # Run App
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+
